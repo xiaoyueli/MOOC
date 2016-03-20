@@ -1,0 +1,43 @@
+text
+
+//用于控制文本
+
+1. text-align: left/right/center/justify（两端对齐）
+
+2. vertical-align: baseline（基线，默认）|sub（下标）|super（下标）|top（对齐当前行最高点）|text-top（对齐文字最高点）|middle|bottom|text-bottom|%|<length eg. em/px 以baseline为起点往上，负数往下>
+
+3. text-indent: ex/px|%
+
+4. white-space: normal（换行空格都被合并成一个空格）|nowrap（nomal基础上不换行）|pre|pre-wrap|pre-line（只保留换行和wrap，空格合并）
+
+5. word-wrap: normal|break-word
+
+6. word-break: normal|keep-all|break-all
+
+
+
+7. text-shadow: none|[<length>{2,3} && <color>?]#
+ps. 1.	length at least two value, at most 3 value
+		the first value: x coordinate
+		the second	value: y co
+		the third value: 阴影的模糊半径
+	2.	without color value, the color of shadow same with text
+eg. text-shadow: 1px 2px red
+
+8. text-decoration: none|[underline||overline||line-through]
+ps. || means 多选多
+	|  means 多选一
+
+9. text-overflow: clip(default)|ellipsis(...)
+eg.
+text{
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis
+}
+
+10. overflow  	//内容溢出后的处理
+	overflow: visible(default)|hidden|scroll|auto
+	overflow-x/overflow-y
+
+	auto: 当有内容溢出时出现滚动条，否则不显示

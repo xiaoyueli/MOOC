@@ -1,0 +1,53 @@
+pseudo selector
+
+1. pseudo class selector:伪类选择器
+eg.
+<a href="http://www.google.com"></a>
+a:link{} 		//only for link
+a:visited{} 	//only for link
+a:hover{} 		//鼠标悬浮
+a:active{} 		//mouse clicks
+ps. if using all these four on link, the order can not change.
+
+eg.
+input:enabled{}
+input:disabled{}
+input:checked{}
+
+eg. 	//child means item, might use on other tags
+li:first-child{}
+li:last-child{}
+li:nth-child(even/odd){}
+li:nth-child(expression with n start from 0,eg. 2n+1){}
+li:nth-last-child(){} 	//reverse order
+:only-child{} 	//the lists with one item
+
+eg.
+dd/dt:first-of-type{}
+dd/dt:last-of-type{}
+dd/dt:nth-of-type(even/odd){}
+dd/dt:nth-last-of-type(expression){}
+
+eg.
+<p>当我足够<span>好</span>，才会<span>遇见</span>你</p>		//two span in this p
+<p>当我足够<span>好</span>，才会遇见<em>你</em></p> 		//only one span in this p
+span:only-of-type{color:red} 	//influence second p 
+
+eg.
+<p></p>
+<div></div>
+:empty{}
+
+eg.
+:not(p)
+:not(div)
+
+
+
+2. fake element selector 	//two ":"
+eg.
+::first-letter{}
+::first-line{}
+::before{content:""}
+::after{content:""}
+::selection{} 	//被用户选中的内容

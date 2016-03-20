@@ -1,0 +1,42 @@
+operators
+
+1. == / != : 自动进行类型转换
+eg.
+	var num = "4"
+	num == 4 //true
+
+2. ===/ !== : 绝对相等
+eg.
+	var num = "4"
+	num === 4 //false
+
+ 3. boolean value
+	 1. 0: false
+	 2. []: true
+	 3. "": false
+
+4. 条件操作符：
+ex0 ? ex1 : ex2
+ex0 : boolean expression
+if ex0 is ture, the result = the value of ex1, else = the value of ex2
+
+5. object operator:
+var cat = {name: 'kitty', age: 2};
+	1. delete:
+		delete cat.name;
+	2.  . and [] //获取对象属性
+		cat.name or cat['name']
+	3. instanceof: 
+		cat instanceof Object; //true
+		cat instanceof Number; //false
+	4. in
+		'name' in cat; 	// true
+		'run' in cat; // false
+
+
+6. 位操作符: ~/&/|/^/<</>>/>>>
+	首先将数值转换为32位2进制
+	1. & : 对应位都是1，则该位值为1，否则为0
+	2. << 将二进制的数值向左移，后面补0
+
+

@@ -1,0 +1,4 @@
+#connector
+
+1. 配置加密连接器：
+	keytool -genkey -allas tomcat -keyalg RSA

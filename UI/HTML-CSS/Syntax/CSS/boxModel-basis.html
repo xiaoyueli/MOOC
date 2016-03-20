@@ -1,0 +1,58 @@
+box model basis
+*
+*
+*
+关于CSS属性的浏览器兼容性，可以通过 http://caniuse.com/ 查询。
+border-radius ie8及以下不支持
+box-sizing ie7及以下不支持
+box-shadow ie8及以下不支持
+outline ie7及以下不支持
+
+盒模型概念、width、height、padding、margin(水平居中)、border、border-radius、overflow、box-sizing、box-shadow、outline
+
+margin合并问题，详见 https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin_collapsing 外边距合并
+*
+*
+*
+content box:
+
+//width and height设置内容属性
+
+	1. width: <length>|<percentage>|auto(default)
+	1.1. max-width/min-width
+
+	2. height: 	//same with width
+	2.1. max-height/min-height
+
+//background设置的颜色区域= padding + contant
+//盒子与盒子的布局，优先用margin控制，盒子的内容优先用padding控制
+
+	3. padding: [<length>|%]{1, 4} 		//same with margin, difference: margin: auto(default)
+	ps. 四个方向顺时针排列
+	3.1. padding-top/padding-right/padding-bottom/padding-left
+	3.2. abbreviation
+		padding: 10px == padding: 10px 10px 10px 10px;
+		padding: 20px 10px; == padding: 20px 10px 20px 10px;
+		padding: 20px 10px 30px; == padding: 20px 10px 30px 10px;
+		padding: 40px 30px 20px 10px;
+
+//普通元素margin取相邻元素最大值， 浮动元素相邻元素margin相加
+
+	4. margin
+	eg. margin: 0px auto (水平居中)
+
+	5. border:[<boeder-width>||<border-style>||<border-color>]
+	border-width:[<length>|thin|medium|thick]{1,4}
+	border-style:[solid|dashed|dotted|..]{1,4}
+	border-color:[<color>|transparent]{1,4}
+
+	6. outline: [<outline-width>||<outline-style>||<outline-color>]
+	ps. 1. outline is outside border
+		2. outline does not occupy space
+		3. outline-color: <color>|invert(reverse of background color)
+
+
+
+border box:
+
+1.box-sizing: content-box(default)|border-box

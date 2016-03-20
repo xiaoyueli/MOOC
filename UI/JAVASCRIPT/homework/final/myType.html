@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>my type</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function myType(param)
+	{
+		if (param === null) {
+				return null;
+			}else if (param === undefined){
+				return undefined;
+			}else{
+				var str = param.constructor.toString();
+				return str.substring(9, str.search(/[{(]/));
+			}
+	}
+	document.write(myType(1)+"<br>");		//返回值： "number"
+	document.write(myType(false)+"<br>");		//返回值： "boolean"
+	document.write(myType({})+"<br>");		//返回值： "object"
+	document.write(myType([])+"<br>");		//返回值：" Array"
+	document.write(myType(function(){})+"<br>");	//返回值："function"
+	document.write(myType(new Date())+"<br>");	//返回值： "Date"
+</script>
+</html>

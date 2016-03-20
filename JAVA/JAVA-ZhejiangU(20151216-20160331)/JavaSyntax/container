@@ -1,0 +1,7 @@
+#container
+
+1. ArrayList<type(class)>  //有序
+
+2. HashSet<type(class)>	//无序容器，元素不能重复
+
+3. HashMap<key(class), value(class)>	//无序容器，key不能重复

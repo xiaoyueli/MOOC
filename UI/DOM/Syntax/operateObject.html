@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>operate Object</title>
+	<style>
+		.test2 {
+			width: 200px;
+			height: 200px;
+			border: 1px solid pink;
+		}
+	</style>
+</head>
+<body>
+	<!-- 2种操作对象的方法：操作标签属性 和 操作CSS属性 -->
+	<div class = "test" id = "one" title = "click me" onclick = "t();" style = "width:100px; height: 100px; background: pink; border-bottom: 1px solid red">你好</div>
+	<!-- // class, id, title 是标签属性 -->
+	<!-- //style下的width, height, background是CSS属性 -->
+
+	<div class = "test2" id = "two" title = "click me" onclick = "f();" >hi,there</div>
+</body>
+<script type="text/javascript">
+
+	function t()
+	{
+
+		var outs = document.getElementById("one"); 	
+		outs.title;		//"click me"
+		//只有当style属性写在html标签里才能通过这种方式操作css属性
+		outs.style.width = parseInt(outs.style.width)+5+"px";
+		outs.style.height = parseInt(outs.style.height)+5+"px";		//outs.style.width 返回的是字符串
+		outs.style.borderBottomWidth = parseInt(outs.style.borderBottomWidth)+1+"px";
+		//style属性名用‘-’分隔时，去掉‘-’，后面的单词首字母大写.eg.  borderBottomWidth
+		// alert(outs.style.color);	//没有在标签里定义的属性不能读取数值
+		outs.style.color = "red";	//但是可以赋值改变没有在标签里定义的属性。
+
+	}
+
+	function getStyle(obj, att)
+	{
+		return obj.currentStyle ? obj.currentStyle[att] : getComputedStyle(obj, null)[att]; //null处的值为obj的伪类值，如 :link, :hover
+	}
+
+	function f()
+	{
+		var outs2 = document.getElementById("two");
+		outs2.style.borderWidth = parseInt(getStyle(outs2, "borderWidth"))+1+"px";
+	}
+
+</script>
+</html>

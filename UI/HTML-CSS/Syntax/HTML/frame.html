@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Frame</title>
+</head>
+	<frameset rows = "20%, *">
+		<frame src = "http://www.baidu.com">
+		<frameset cols = "20%, *">
+			<frame src = "example-frame.html"></frame>
+			<frame src = "css.html" name = "frame"></frame>
+		</frameset>
+	</frameset>
+
+</html>
+
+<!-- 
+1. 不需要body,直接设置
+2. frameset 设置分割成几行几列，用“，”隔开，"*"表示剩下所有空间 
+3. name 用于标记窗口，例如a标签中target的值
+-->

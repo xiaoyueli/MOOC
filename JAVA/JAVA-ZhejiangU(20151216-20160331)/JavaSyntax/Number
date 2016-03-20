@@ -1,0 +1,14 @@
+#Number
+
+1. int double float
+
+2. (int)doubleNum
+	int赋值给double会自动转换
+	
+3. 5 == 5.0  //true
+
+4. 1 ==(0.1 +0.1 +0.1+ 0.1+ 0.1 +0.1 +0.1+ 0.1 +0.1 +0.1)  //false
+	比较浮点数是否相等的方法：
+	Math.abs(f1- f2)< 0.000001
+
+5.	java 不支持数字充当布尔值,例如用1充当true.

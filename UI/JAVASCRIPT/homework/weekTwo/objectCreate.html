@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>compatible Object create</title>
+</head>
+<body>
+	<script type="text/javascript">
+		if(!Object.create)
+		{
+			Object.prototype.create = function(proto)
+			{
+				var F = function(){};
+				F.prototype = proto;
+				return new F();
+			}
+		}
+		var a = Object.create({x: 1, y: 2});
+    	alert(a.x);
+	</script>
+</body>
+</html>

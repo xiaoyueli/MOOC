@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>variables</title>
+</head>
+<body>
+
+</body>
+<script>
+		var a2；
+		var $a2；
+		var _s;
+		var A2；
+		// 变量可由字母，数字，_， $ 组成，不能以数字开头
+		// 变量区分大小写
+		// 变量声明会在当前定义域置顶
+		(function(){
+			a = 5;
+			alert(window.a); //undefined
+			var a = 10;
+			alert(a);		//10
+		})(); 
+		//以上代码等同于：
+		(function(){
+			var a;
+			a = 5;
+			alert(window.a); //undefined
+			var a = 10;
+			alert(a);		//10
+		})(); 
+
+	</script>
+</html>

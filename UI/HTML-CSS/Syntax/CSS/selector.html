@@ -1,0 +1,69 @@
+selector
+
+1. tag 
+	name {propertyName : value;}
+	eg. 
+		p {color: red}
+
+2. class 
+	class = "name"
+	.name {}
+	eg.
+		<p class = "special normal"></p>
+		.special {}
+		.normal {}
+
+3. id
+	id = "name"
+	#name {}
+	eg.
+		<div id = "first"></div>
+		#first {}
+
+4. *	:select all elements in the page
+	* {}
+
+5. attribute
+	[name] {}
+	eg.
+	<input type = "text" value = "这个框不能被修改" disabled>
+	[disabled] {background-color: gray;}
+
+6. attribute = value
+	[name = value] {}
+	[type = "text"]{background-color: red}
+
+7. [attribute ~= value]{} == .value{}
+	eg.
+	<p class = "students teacher"></p>
+	<p class = "teacher"></p>
+	[class ~= "teacher"] {} 	//select all including "teacher" selector
+
+8. [att|=value]{}
+	eg.
+	<p lang = "en"></p>
+	<p lang = "en-us"></p>
+	<p lang = "en-au"></p>
+
+9. [att^= value]{} 	//those beginning with value
+	eg.
+	<a href="#end"></a>
+	<a href="#lastsec"></a>
+	[href^="#"]{}
+	ps.#定位id地址
+
+10. [att$= value]{} 	//those ending with value
+	eg.
+	<a href="http://name.pdf"></a>
+	[href$= "pdf"]{}
+
+11. [att*=value]{} 		//those including value
+	<a href="http://lady.163.com/12.html"></a>
+	[href*="lady.163.com"]{}
+
+12. combination selector: 组合选择器
+	eg.
+	p[color = "red"]{}
+	img[src$=jpg]{}
+
+13. div p {color: red;} //div中的P标签：div为父元素，p为子元素

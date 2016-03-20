@@ -1,0 +1,39 @@
+#Array
+
+1.create
+- <type>[] <name> = new type[elementnumber]
+	elementnumber must be provided.
+	elementnumber can be variable.
+	eg.
+		int[] num = new int[100];
+		int x = 100;
+		int[] num = new int[x];
+- int[] num = {1,2,3,4,5};
+	
+2. 数组不能动态长大。
+
+3. <name>.length;
+	eg.
+		num.length;
+	
+4. java会自动初始化new 的数组，int类的默认为0;
+
+5. 数组变量赋值是复制地址，复制内容需遍历。
+	eg.
+		int[] a = {1,2,3,4};
+		int[] b = a;
+		b[0] = 2; //a[0] = 2;
+
+6. 数组变量相比是比较地址。
+	eg.
+		int[] a = {1,2};
+		int[] b = {1,2};
+		a == b // false
+		int[] c = a;
+		a == c // true
+
+7.  int[][] array = new int [m][n];
+
+
+
+

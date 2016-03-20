@@ -1,0 +1,66 @@
+Array
+
+1. create
+var a = new Array();
+var a = [];
+eg.
+	var a = [1,2,3];
+
+2. 数组内可包括不同类型的成员
+var a = [1, "2", {name: "kitty"}];
+
+3. arr.length
+
+4. arr.indexOf(element, fromindex) 	//若无，返回-1
+
+5. arr.forEach(function)
+eg.
+	var addScore = function(item, index, array){ 	//function此三个参数必须此顺序
+	item.score +=5;
+};
+students.forEach(addScore);
+
+以下方法都改变了原来的数组：
+
+6. arr.reverse();	//逆序排列
+
+7.arr.sort([compareFunction]) 	//compareFunction必须有2个参数
+eg.
+	var byScore = function(a, b){
+		return b.score- a.score;
+};
+students.sort(byScore);
+
+8. arr.push(element1,...,elementN); 	//在数组后添加新元素
+
+9. arr.unshift(element1, ..., elementN); 	//在数组前添加新元素
+
+10. arr.shift(); //返回第一个元素，并且把它从原来的数组中删除
+
+11. arr.pop(); 	//返回最后一个元素，并且把它从原来的数组中删除
+
+12. arr.splice(index, howMany, element0,...,elementN)	// 从index开始删除howMany个元素，并添加element0-elementN
+howMany = 0 : 不删除，直接在index前面添加
+element缺省: 只删除，不添加元素
+返回值为被删除的元素。
+
+
+不改变原来的数组，创建新的数组
+
+13. arr.slice(indexstart, indexend) 	//不包含end,可缺省
+
+14. arr.concat(value1, ..., valueN);
+eg.
+	arr1.concat(arr2,arr3); //把arr1,arr2,arr3连接起来放在一个数组类，此函数不仅用于数组
+
+15. arr.join([separator])  //()默认为,分割
+	var a = ["1", "2", "3"];
+	a.join("+"); 	//"1+2+3"
+
+16. arr.map(function); //function有返回值
+						//arr.map(fun); 返回值为fun返回值组成的新数组
+
+17. arr.reduce(callback-function, initial-value); //返回function返回值的累计值
+	var callback-funcation = function (previousvalue, item, index, array){
+		return previousvalue + item.score;
+}

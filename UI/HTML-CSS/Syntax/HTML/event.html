@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>event</title>
+	<style>
+		#this {
+			width: 100px;
+			height: 100px;
+			border: 1px solid black;
+		}
+		#that {
+			height: 300px;
+			background-color: yellow;
+		}
+	</style>
+</head>
+<!-- 在标签里设置Onload属性 -->
+<body onload = "f7()">  
+	
+	<div id="this" onclick = "f1()" onmouseover= "f2()"></div>
+	<input type="text" name = "name" onfocus = "f3()" onblur = "f4()">
+	<form action="event.html" onsubmit = "return f5()">
+		<button type= "submit" >submit</button>
+	</form>
+	<div id= "that" ></div>
+	
+</body>
+<script>
+	//onclick
+	//onfocus
+	//onblur
+	//onmouseover
+	//onsubmit
+	//onload   需等页面所有元素加载完毕才会执行,只能有一个onload属性
+	function getStyle(obj, att)
+	{
+		return obj.currentStyle ? obj.currentStyle[att] : getComputedStyle(obj, null)[att];
+	}
+	function f1()
+	{
+		var obj = document.getElementById("this");
+		obj.style.borderWidth = parseInt(getStyle(obj,"borderWidth")) + 1 +"px";
+	}
+	function f2()
+	{
+		var obj = document.getElementById("this");
+		obj.style.background = "pink";
+	}
+	function f3()
+	{
+		var obj = document.getElementsByName("name")[0];
+		obj.style.border = "10px solid red";
+	}
+	function f4()
+	{
+		var obj = document.getElementsByName("name")[0]; 
+		obj.style.border = "";
+	}
+	function f5()
+	{
+		alert("Hi, there!");
+	}
+
+	//在javascript里调用onload
+	// window.onload = function f6()
+	// {
+	// 	var obj = document.getElementById("this");
+	// 	obj.innerHTML = "<p>How are you?</p>";
+	// }
+
+	function f7()
+	{
+		alert("Hi");
+		var obj = document.getElementById("that");
+		obj.innerHTML = "<ul><li>春</li><li>夏</li><li>秋</li><li>冬</li><ul>"
+	}
+</script>
+</html>

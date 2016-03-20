@@ -1,0 +1,20 @@
+box model shape
+
+1. border-radius: [px/em|%]{1,4}[/[px/em|%]{1,4}?]
+ps. first[]: radius of x coor
+	second[]: radius of y coor
+eg.
+	border-radius: 0 10px 20px 30px/40px 20px 10px 0px
+				   x1 x2	x3  x4 / y1	  y2   y3   y4
+1.1 border-top-left-radius:
+
+
+2. box-shadow: none|<shadow>[,<shadow>]* 	//可以多个阴影叠加
+<shadow>: inset（内阴影）? && <length>{2,4} && <color>?
+eg. box-shadow: 4px 6px 3px 2px red;
+	value 1: 水平偏移
+	value 2: 垂直偏移
+	value 3: 模糊半径 eg. 往外1.5px模糊，往内1.5px模糊
+	value 4: 模糊的大小
+
+eg. box-shadow: 3px 3px 5px 2px, inset 0px 0px 5px red;

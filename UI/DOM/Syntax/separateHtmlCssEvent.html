@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>separate Html Css Event</title>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li>Spring</li>
+			<li>Summer</li>
+			<li>Autumn</li>
+			<li>Winter</li>
+		</ul>
+	</div>
+</body>
+<script type="text/javascript">
+	document.getElementsByTagName("div")[0].onclick = function(){  //获得对象后调用event
+		var list = document.getElementsByTagName("li");
+		var lastChild = list[list.length -1];
+		if (list.length >0) {
+			this.children[0].removeChild(lastChild);
+		};
+		
+	}
+</script>
+</html>

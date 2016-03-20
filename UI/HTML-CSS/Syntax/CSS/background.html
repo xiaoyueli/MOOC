@@ -1,0 +1,27 @@
+background
+
+1. background- color: rgba()|rgb()|transparent(default)|#000000
+
+2. background-image:<image>|none[,<image>|none]*
+<image> = url()
+eg.
+	background-image: url(), url();		//先写的在上一层， color始终在最下层
+
+3. background-repeat: <repeat-style>[,<repeat-style>]*
+<repeat-style>= repeat-x|repeat-y|[repeat(default)|space（图片大小不变，平分多余空隙）|round（重复，无多余空隙，图片可能被压缩拉伸）|no-repeat]{1,2（当写2个值时，第一个表示x轴，其次y轴）}  
+
+4. background-attachment: <attachment>[,<attachment>]*
+<attachment>=scroll(default，图片不随内容动)|fixed（参照物是整个窗口，几乎不使用）|local（图片和内容一起动）
+
+5. background-position: <position>[,<position>]*
+<position> = [left|right|top|bottom|center|px|%]|
+			 [left|right|center|px|%] [top|bottom|center|px|%]|
+			 [center|[left|right][px|%]?] && [center|[top|bottom][px|%]?]
+eg.
+	background-position: 10px 20px	//图片左边在x轴偏移10px, 图片上边在y轴偏移20px
+	background-position: right;	//最右边，默认Y垂直居中
+	background-position: right 10px top 20px	//图片右边离容器右边的距离，same with top
+	background-position: 10% 20%	//图片width的10%在容器width的10%处，same with height
+
+
+background: color url() repeat attachment position;  //空格隔开

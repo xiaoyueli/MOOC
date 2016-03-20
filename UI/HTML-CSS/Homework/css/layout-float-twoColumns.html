@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>float layout</title>
+	<style type="text/css">
+		#parent {
+			width: 810px; 
+			margin: 0 auto;
+			font: 30px/200px "微软雅黑"; 
+			color: white;
+			text-align: center;
+
+		}
+		#side {
+			width: 200px;
+			height: 200px;
+			margin-right: 10px;
+			background-color: #c00000;
+			float: left;
+		}
+		#main {
+			width: 600px;
+			height: 200px;
+			background-color: #4f81bd;
+			float: right;
+		}
+		#clearfix {
+			width: 0px;
+			height: 0px;
+			clear:both; 
+			overflow: hidden; 
+			visibility: hidden;
+		}
+	</style>
+</head>
+<body>
+	<div id="parent"> 
+	    <div id="side">侧栏</div>
+	    <div id="main">主栏</div>
+	    <div id="clearfix"></div>
+	</div>
+</body>
+</html>

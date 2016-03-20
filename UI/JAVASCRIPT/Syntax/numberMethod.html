@@ -1,0 +1,21 @@
+NumberMethod
+
+1. parseInt(String, radix（将string当做radix进制，缺省时为十进制）)
+eg.
+	parseInt('1.1')  	// 1
+	parseInt('10', 16)  	// 16: 1*16+0*16
+	parseInt('www') 	//NaN
+
+2. parseFloat(String)
+eg.
+	parseFloat('1.1') // 1.1
+	parseFloat('12.4a2') //12.4
+
+3. Number(value)
+eg.
+	Number('100.1') 	//100.1
+	Number('12.4a2')	//NaN
+
+4. (num).toFixed(digits)	//保留digits位小数，输出为字符串
+eg.
+	(100.234).toFixed(2)	//"100.23"

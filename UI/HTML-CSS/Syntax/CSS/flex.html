@@ -1,0 +1,35 @@
+flex container 
+*
+*
+flex ie9及以下不支持，目前主要用于移动web页面中
+*
+*
+display: flex
+在文档流中的直接子元素为flex item
+
+1. flex-direction : row(default)|row-reverse|column|column-reverse
+
+2. flex-wrap: nowarp(default)|wrap|wrap-reverse
+
+3. flex-flow: <flex-direction>||<flex-wrap>
+
+4. order: interger eg. 0(default) 可为负数
+
+
+5. flex-basis: px/%	//如果是按row排，设置宽，按column排，设置高
+
+6. flex-grow: interger 默认值0，分得剩余空间的份数
+
+7. flex-shrink: interger 默认值1，分得超出空间的份数
+
+8. flex: grow shrink basis
+
+
+9. justify-content: flex-start|flex-end|center|space-between|space-around 	//（主轴对齐方式）
+
+10. align-items: flex-start|flex-end|center|baseline（基线对齐）|stretch（拉伸）	//（辅轴cross-axis对齐方式）
+
+11. align-self : same with align-items	//设置单一元素
+
+
+12. align-content: flex-start|flex-end|center|space-between|space-around|stretch（拉伸）

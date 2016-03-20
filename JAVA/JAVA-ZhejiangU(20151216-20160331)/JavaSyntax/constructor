@@ -1,0 +1,21 @@
+#constructor
+
+1. this();  //在构造函数中调用其他构造函数，必须出现在第一句，只能调用一次。
+eg.
+	public void game()
+	{	
+		int num;
+		boolean win = false;
+		game()
+		{
+			win = true;
+		}
+		game(int num)
+		{
+			this();
+			this.num = num;
+		}	
+		.
+		.
+	}
+	

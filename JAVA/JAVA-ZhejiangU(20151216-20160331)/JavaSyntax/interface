@@ -1,0 +1,20 @@
+#interface
+
+1. 接口所有的方法都是没有方法体的，而且都是public abstract，即使你没有这样声明。
+
+2. 而接口中的所有成员变量都是public static final的变量(不能改变的常量)，并且必须有定义初始化，因为所有变量都必须在编译的时候有确定值。
+
+3. 实现接口的类必须覆盖接口中所有的方法，否则这个类就成为一个抽象类。
+
+4. Java不允许多继承，但是允许一个类实现多个接口，也允许一个接口从多个接口得到继承，但是不允许接口从类继承。
+
+5.eg.
+	public interface Cell{
+		void draw(int x, int y);
+	}
+
+	public class Fox extends Animal implements Cell{
+		public Fox(){
+			super(20,4);
+		}
+	}

@@ -1,0 +1,34 @@
+letter
+
+//em 以父元素font-size大小为参考
+
+1. font-size: npx/nem/%/small/smaller
+
+//font-family控制字体类型，可同时设置多种备选，按顺序优先使用
+//serif 表示有衬线字体，例如宋体
+//sans-serif 表示无衬线字体，例如黑体
+
+2. font-family: [具体字体名|字体样式(serif, sans-serif, cursive, fantacy, monospace)]#		//#代表[]中属性可并列存在，以","隔开
+eg.
+font-family: Tahoma Clibri sans-serif 		//first apply Tahoma, if not available, then after
+
+3. font-weight: normal|bold|bolder|lighter|number 	//字体粗细
+
+4. font-style: normal|italic|oblique
+ps.italic 字体自带斜体形式
+   oblique 字体无斜体形式，强制斜体
+
+5. line-height: normal|<number eg. 12>|npx/xem|%
+ps. % 先计算行高，后来元素继承计算值
+	<number> 不预处理，后来元素相对变化
+
+
+format:
+
+font:[[<font-style>||<font-weight>||<font-variant>||<font-stretch>]?<font-size>[/<line-height>]?<font-family>]|caption|icon|menu|message-box|small-caption|status-bar
+
+常用: font:[[<font-style>||<font-weight>]?<font-size>[/<line-height>]?<font-family>]
+ps. ?: optional
+eg. font: 30px/2 Tahoma monospace
+	font: italic bold 30px Tahoma monospace
+

@@ -1,0 +1,8 @@
+#variable parameters
+
+1. public void demo(int ...paras){} 
+	可变参数当做数组操作
+
+
+2. public void demo2(int x, int ...paras){}
+	其他参数需写在可变参数之前 

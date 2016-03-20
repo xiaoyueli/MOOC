@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tabform</title>
+	<style>
+		html, body {height: 100%; }
+		.lay	{ display: flex; flex-direction:column; height:100%; width: 574px; border: 1px solid #999; font: 14px "微软雅黑"; margin: 0 auto;}
+		.tb		 {display: flex; }
+		.laytag {display: inline-block; border: 1px solid #cecece; background: #f1f1f1; line-height: 40px; flex-grow:1; text-align: center;}
+		.checked {background-color: white; border: white;}
+		.off {display: none;}
+		.conarea { padding: 20px; background-color: white; flex-grow:1;}
+	</style>
+</head>
+<body>
+
+		<div class = "lay">
+			<div class = "tb">
+				<div class = "laytag checked">课程</div>
+				<div class = "laytag">学习计划</div>
+				<div class = "laytag">技能图谱</div>
+			</div>
+			<div class = "conarea">课程内容</div>
+			<div class = "conarea off">学习计划内容</div>
+			<div class = "conarea off">技能图谱内容</div>
+			
+		</div>
+
+</body>
+</html>
+
+<!-- alternative -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tabform</title>
+	<style>
+		.parent {position: relative;}
+		.lay	{position: absolute; width: 574px; border: 1px solid #999; font: 14px "微软雅黑"}
+		.tb		 {display: flex;}
+		.laytag {display: inline-block; border: 1px solid #cecece; background: #f1f1f1; line-height: 40px; flex-grow:1; text-align: center;}
+		.checked {background-color: white; border: white;}
+		.conarea {padding: 20px; height: 100px; background-color: white;}
+	</style>
+</head>
+<body>
+	<div class = "parent">
+		<div class = "lay">
+			<div class = "tb">
+				<div class = "laytag">课程</div>
+				<div class = "laytag checked">学习计划</div>
+				<div class = "laytag">技能图谱</div>
+			</div>
+			<div class = "conarea">学习计划内容</div>
+		</div>
+		<div class = "lay">
+			<div class = "tb">
+				<div class = "laytag">课程</div>
+				<div class = "laytag">学习计划</div>
+				<div class = "laytag checked">技能图谱</div>
+			</div>
+			<div class = "conarea">技能图谱内容</div>
+		</div>
+		<div class = "lay">
+			<div class = "tb">
+				<div class = "laytag checked">课程</div>
+				<div class = "laytag">学习计划</div>
+				<div class = "laytag">技能图谱</div>
+			</div>
+			<div class = "conarea">课程内容</div>
+		</div>
+	</div>
+</body>
+</html> -->

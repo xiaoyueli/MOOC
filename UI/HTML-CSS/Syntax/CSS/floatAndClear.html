@@ -1,0 +1,35 @@
+float and clear
+
+float: left|right|none(default)
+style = "float:left"
+1. 默认为内容宽度
+2. 脱离文档流
+3. 向指定方向移动
+4. 所有float的元素在同一文档流中
+5. 后续元素会占据float元素的位子，但是后续元素的内容会环绕float元素 
+
+
+清除浮动的影响
+1. clear：both|right|left 		//如果普通元素不想被浮动元素遮住，申明clear属性，eg. clear: left 不被向左浮动的元素遮住。
+eg.
+	<style type="text/css">
+		div { width: 50%; height: 200px;}
+		#left {background: red; float: left;}
+		#normal{background: green; clear: left;}  //normal div 排在left div下一行而不会被压住
+	</style>
+	</head>
+	<body>
+		<div id = "left"></div>
+		<div id = "normal"></div>
+	</body>
+eg.
+	<br class = "cb">
+	.cb{clear:both; height = 0; overflow:hidden; visibility:hidden;}
+
+2. clearfix: both|right|left
+clearfix + after
+eg.
+	<div class = "clearfix">
+	.clearfix:after{content:"."; display:block; clear:both; height:0; overflow:hidden; visibility:hidden;}
+	</div>
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>parseQuery</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var parseQuery = function(query)
+		{
+			var arr = query.match(/([^&]+)/g);
+			var result = "";
+			for (var i = 0; i < arr.length; i++) {
+				var subarr = arr[i].match(/([^=]+)/g);
+				if (subarr[1]) {
+					result += subarr[0]+":"+"\""+subarr[1]+"\""
+				}else{
+					result += subarr[0]+": \"\""
+				};
+				
+				if (i != (arr.length-1) ) {
+					result += ","
+				};
+			};
+			document.write("{"+result+"}<br>");
+		}
+		var jerry = parseQuery("name=jerry&age=1");
+		jerry;
+		var tom = parseQuery("name= tom &age=12&gender&");
+		tom;
+	</script>
+</body>
+</html>

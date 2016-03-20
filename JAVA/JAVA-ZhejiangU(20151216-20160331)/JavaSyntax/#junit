@@ -1,0 +1,45 @@
+junit
+
+//新建一个测试类
+//Before(After)和beforeClass(afterClass)的区别是前者在测试每一个方法时都被调用，后者是只在类加载的时候调用一次
+// public static void beforeClass(){}
+@Before / @beforeClass
+方法内是需要初始化的资源
+
+@After / @afterClass
+方法内是需要释放的资源
+
+@Test
+标记在要测试的方法前
+
+eg.
+public class Test{
+	private Person p;		//假设有一个Person类，有方法run和eat, 测试run和eat
+	
+	@Before
+	public void before() 	//方法叫什么名字自定义
+	{
+		p = new Person();
+		assert.xxx 			//返回值和期望相同则测试通过，否则测试失败。
+	}
+	
+	@Test
+	public void testRun()
+	{
+		p.run();
+	}
+	
+	@Test
+	public void testEat()
+	{
+		p.eat();
+	}
+	
+	@After
+	public void after()
+	{
+		P = null;
+	}
+}
+	
+	

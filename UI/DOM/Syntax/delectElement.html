@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>delect element</title>
+</head>
+<body>
+	<button type = "button" onclick="delect();">delect</button>
+	<ul>
+		<li>one</li>
+		<li>two</li>
+		<li>three</li>
+		<li>four</li>
+	</ul>
+</body>
+<script type="text/javascript">
+	function delect()
+	{
+
+		var list = document.getElementsByTagName("li");			
+		var lastchild = list[list.length-1];					//sept_one  查找子元素
+		if (lastchild) {										//获得父元素
+			lastchild.parentNode.removeChild(lastchild);		//通过父元素删除
+		};
+
+	}
+</script>
+</html>

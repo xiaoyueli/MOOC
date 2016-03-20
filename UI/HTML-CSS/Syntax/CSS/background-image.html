@@ -1,0 +1,54 @@
+background image
+
+1. linear-gradient(value);
+value = [[<angle>|to <side-or-corner>],]?<color-stop>[,<color-stop>]+
+<side-or-corner> = [left|right] || [top|bottom]
+<color-stop> = <color> [<%|px>]?
+eg.
+	background-image: linear-gradient(red, green) // top to bottom
+	background-image: linear-gradient(to top, red, green)
+	background-image: linear-gradient(to right bottom, red, green 20%, blue)
+	background-image: linear-gradient(0deg, red, blue) 	//bottom to top
+	background-image: linear-gradient(45deg, red, blue)	//从下往上，顺时针偏移
+
+2. radial-gradient(value)
+value = [[circle||<length>][at <position>]?,|
+		 [ellipse||[px|%]{2}][at <position>]?,|
+		 [[circle|ellipse]||<extent-keyword>][at <position>]?,|at <position>,]?
+		<color-stop>[,<color-stop>]+
+<extent-keyword> = closest-side|farthest-side|closest-corner|farthest-corner
+eg.
+	background-image: radial-gradient(closest, red, blue)	//圆心到最近x and y边,镜像渐变
+	background-image: radial-gradient(circle 100px, red, blue)	//半径缺省时，默认大小：farthest-corner
+	background-image: radial-gradient(red, blue, yellow)	//形状半径时，默认椭圆渐变，半径经过farthest-corner，颜色从里到外
+	background-image: radial-gradient(100px, 50px at 0 0, red 20%, blue)	//椭圆渐变，半径对应farthest-corner and closest-corner, position 缺省默认center
+
+3. repeate
+repeating-radial-gradient();
+repeating-linear-gradient(); 
+
+4. background-origin: border-box|padding-box(default)|content-box
+
+5. background-clip: border-box(default)|padding-box|content-box
+
+6. background-size: <bg-size>[,<bg-size>]*
+<bg-size> = [px|%|auto]{1,2}|cover|contain
+eg.
+	background-size: 20px	//只设置一个值时，另一个值时auto
+	background-size: auto	//原始大小
+	background-size: 50% 50%	//%是相对容器而不是图片本身。
+	background-size: cover	//图片最小边 == 容器最小边，填满容器
+	background-size: contain	//图片最大边 == 容器最小边，图片不能超出容器
+
+
+
+7. abbreviation for background
+background: [<bg-layer>,]*<final-bg-layer>
+<bg-layer> = <bg-image> || <position>[/<bg-size>]?||<repeat-style>||<attachment>||<box>||<box>
+<final-bg-layer> = <bg-layer> || <background-color>
+eg.
+	url() 0 0/ 20px 20px no-repeat,
+	url() 50% 50%/contain no-repeat content-box green;
+ps. first box for background-origin
+	second box for background-clip 
+	if only one value setted, it applies to the both 

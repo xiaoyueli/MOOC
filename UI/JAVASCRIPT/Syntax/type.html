@@ -1,0 +1,26 @@
+type
+
+类型识别
+-typeof  //不能识别除function以外的对象类型。 typeof null; object
+eg.
+	var name = "cat";
+	typeof name;  //string
+	typeof(name); //string
+
+-instanceof  	// 返回布尔值，对象类型返回true, 原始类型返回false
+eg.
+	[] instanceof Array; 	//true
+
+
+-Object.prototype.toString.call() 		//不能识别自定义对象类型
+eg.
+	Object.prototype.toString.call(123);
+>>>	[Object Number];
+	
+
+-constructor  	// 判断除null和Undefined以外的类型，因为他们没有构造函数
+eg.
+	"jerry".constructor === String
+>>> true 
+	"jerry".constructor.toString();
+>>> "function String() { [native code] }"

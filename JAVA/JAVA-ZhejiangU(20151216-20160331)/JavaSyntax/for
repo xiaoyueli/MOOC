@@ -1,0 +1,8 @@
+#for
+
+1. for each
+	int[] data = new int[10];
+	for(int i: data)    //将data中的数据取出来赋值给i
+	{
+		System.out.println(i);
+	}

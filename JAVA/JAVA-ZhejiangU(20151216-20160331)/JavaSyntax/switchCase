@@ -1,0 +1,10 @@
+#switchCase
+
+eg. 
+switch(type)
+{ 	case 1 : expression; break; 
+	case 2 : expression; break;
+	case 3 : expression; break;
+	default: expression;
+} 
+ type 可以是整数型或字符串类型

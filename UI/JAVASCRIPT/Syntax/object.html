@@ -1,0 +1,58 @@
+object
+
+1. create object
+var cat = new Object();
+var cat = {};
+
+2. var cat = {
+	att1 : value,
+	att2 : function(){}
+	.
+	.
+}
+
+3. cat.att1;
+	cat.att2();
+	cat['att1'];
+
+4. cat.att3 = "American"; //可直接增加一个属性值为"American"
+
+5. delete cat.att1;
+
+6. obj.constructor
+eg.
+	var num = new Number(123);
+	num.constructor 	//Number
+
+7. obj.toString()
+
+8. obj.valueOf()
+eg.
+	var num = new Number(123);
+	num.valueOf() 	//123
+
+9. obj.hasOwnProperty("属性名") 	//判断一个属性是不是属于对象，且不是继承得来
+	
+
+
+
+
+10. prototype
+
+1. Object.create(object)
+eg.
+	var object2 = Object.create(object1)         //object1作为原型构造object2
+
+2. 通过构造函数构造原型
+eg.
+	function Obj()
+	{
+		att1: value1,
+		att2: value2
+	}
+
+	Object.prototype.methd1 =function (){
+
+}
+
+var object1 = new Obj();

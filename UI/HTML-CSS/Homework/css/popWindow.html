@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Pop window</title>
+	<style type="text/css">
+	html,body {height: 100%;}
+	.win { position: fixed; top: 50%; left: 50%; width: 302px; border: 1px solid #cccccc; border-radius: 5px; transform:translate(-50%,-50%); }
+	.title {display: flex; align-items: center; position: relative; background-color: #eeeeee; height:40px; padding-left: 20px; padding-right: 20px;}
+	.tw {font: 14px "微软雅黑"; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+	img { position:absolute; width: 10px; height: 10px; top: 10px; right: 10px; cursor: url(../x.png), pointer;}
+	.content {display: flex; flex-direction: column; padding: 20px; font: 12px/1.5 "宋体"; }
+	.cc {flex-grow:1; padding-bottom: 20px;}
+	.cb {margin:auto; width: 80px; height: 30px; background-color: #2e7ecb; color: white; border-radius: 5px; border-color: transparent; cursor: pointer;}
+
+	</style>
+</head>
+<body>
+	<div class = "win">
+		<div class = "title">
+			<div class = "tw">标题栏</div>
+			<img src="../x.png" alt = "关闭">
+		</div>
+		<div class = "content">
+			<div class = "cc">内容区段落</div>
+			<button type = "submit" class ="cb">确定</button>
+		</div>
+	</div>
+</body>
+</html>

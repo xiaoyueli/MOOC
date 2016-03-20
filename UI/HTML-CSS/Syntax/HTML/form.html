@@ -1,0 +1,54 @@
+form
+<form></form>
+att: 
+1. action = "后端的接口地址"	//控制信息往哪发	
+2. method = "post|get(default)"  	//控制信息发送方式，默认方式在地址栏显示发送信息
+3. name = "表单的名字"
+4. autocomplete = "on(default)|off"		//浏览器是否记住客户的输入信息
+
+<fieldset></fieldset> //division of form
+<legend></legend> //title of this field
+
+
+<input>
+	atts:
+		1. type= "file（上传文件）/checkbox（多选框）/radio（单选框）/text（单行文本框）/submit/reset/hidden"
+		2. name = "提交给后端的数据名称"
+		3. value = "数据的值"
+		4. autofocus 	//光标自动选中
+		5. disabled	// for text不能被修改
+		6. form = "关联表单的名字"
+		7. id
+
+<label>content</label>	
+	att:
+		1. for = "关联input的id名字"  	//用label关联后点击label包含的内容，光标可focus到相应input
+
+<button></button>
+	att:
+		1.type = "submit(default)/reset/button"		//button值主要与javascript连用触发事件
+
+
+
+		5. placeholder = "预留信息"		//for text
+		6. readonly		//for text
+		8. checked	// for checkbox and radio
+
+
+
+
+
+5.<select></select>		//下拉选择框
+	att:
+		1. id = "coordinates with 'for' in lable"
+		2. selected		//default value
+	tags:
+		1.<option value = "">name</option>
+		2.<optgroup lable = "name"></optgroup>
+
+6.<textarea></textarea>		//多行文本框
+	att:
+		1.name = ""
+		2.rows = "max of rows"
+		3.cols = "max of cols"
+		4.id = ""

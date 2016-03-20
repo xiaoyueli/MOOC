@@ -1,0 +1,58 @@
+transition and animation
+
+transition:
+
+1. transition-property: none|all|<single-property>[,<single-property>]*
+//设置需过渡效果的属性
+eg.
+	transition-property: left, color;
+
+2. transition-duration: <time>[,<time>]*  
+//有多个属性时可设置多个时间
+
+3. transition-delay: <time>[,<time>]* 
+eg.
+	transition-delay: 3s
+
+4. transition-timing-function:<function>[,<function>]* 	
+	0. linear	//匀速变化
+	1. ease		//两头慢中间快
+	2. ease-in-out	//加强版ease
+	3. ease-in	//开始慢
+	4. ease-out	//结束慢
+	5. cubic-bezier(<x1>,<y1>,<x2>,<y2>) //贝塞尔曲线，这里的输入的是两个控制点坐标，图像x轴值是输入，y轴值是输出值，图像斜率越大的地方，速度越快
+	6. step-start	//开始的时候进行动画
+	7. step-end		//结束的时候进行动画
+	8. steps(<interger>[,[start|end]]?)	//分几步进行动画 
+	eg. transition-timing-function: steps(3, start)
+
+
+5. transition:[[none|single-property] || <duration> || <function> || <delay>]*
+eg.
+	transition: left 2s ease 2s, color 3s
+
+
+animation:
+
+1. animation-name: none|[id]*	//id 类似标记名，可以多个，以","隔开
+
+2. animation-duration 		//same with transition-duration
+
+3. animation-timing-function 	//same with transition-timing-function
+
+4. animation-delay		//same with transition-delay
+
+5. animation-iteration-count: infinite|<integer, 1 is default value> 	//可为多个值，以"，"隔开
+
+6. animation-direction: normal| reverse（反向）| alternate（往返执行动画）|alternate-reverse
+
+7. animation-play-state: running| paused [, running| paused]*
+
+8. animation-fill-mode: none| backwards | forwards | both [, none| backwards | forwards | both]*
+	none : 保留在初始位置，可能既不在第一针也不在最后一针
+	backwards: 开始时保持动画第一针状态
+	forwards: 结束的时候保持动画最后一针状态
+	both : 开始保持第一针，结束保持最后一针
+
+9. animation: <single-animation>[, <single-animation>]*
+	<single-animation> = name || duration || timingfunc || delay || count || direction||fill-mode || play-state

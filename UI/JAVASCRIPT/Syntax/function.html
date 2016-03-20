@@ -1,0 +1,62 @@
+function
+
+1. definition
+- function statement:
+	function add(x, y)
+	{
+		return x+y;
+	}
+
+- function expression:
+	var add = function(x, y)
+	{
+		return x+y;
+	}
+
+- function instance
+	var add = new Function("x","y","return (x+y)");
+
+
+difference:
+1.函数声明可以在声明前调用函数，另两种方法只能在定义后调用函数
+2. 对象实例化构造的函数，不能访问父类函数的变量。其他两种方法可以
+
+
+
+2. arguments
+- Array-like   //类似数组，但不是数组，数组的许多方法不能直接使用
+	-arguments[index]
+	-arguments.length
+//将arguments转化为数组：
+eg.
+	var arr = Array.prototype.slice.apply(arguments);
+
+-arguments.callee  	//当做递归调用函数
+eg.
+	function(i){
+	if(i ==0)
+	return 1; 
+	return i*arguments.callee(i-1);
+}
+
+
+3. apply/call/bind  //都是Funcrion的原型方法：Function.prototype.apply
+作用：将方法应用于无此方法的对象，即方法借用
+eg.
+	function Point(x,y)
+	{
+		this.x = x;
+		this.y = y;
+	}
+	Point.prototype.move = function(x,y)
+	{
+		this.x += x;
+		this.y += y;
+	}
+	var p = new Point(0,0);
+	var circle = {x: 1, y:1, r:1};
+	p.move.apply(circle,[2,1]); 	//circle = {x:3, y:2, r:1};
+	p.move.call(circle, 2, 1);		//circle = {x:3, y:2, r:1};
+	var latermove = p.move.bind(circle, 2, 1);  //前两种是立即实现，后一种返回指定好变化的引用，再次调用才会实现
+	setTimeout(latermove, 1000);
+

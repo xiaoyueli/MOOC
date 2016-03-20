@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>type is</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var type = function(value)
+		{
+			if (value === null) {
+				return null;
+			}else if (value === undefined){
+				return undefined;
+			}else{
+				var str = value.constructor.toString();
+				return str.substring(9, str.search(/[{(]/));
+			}
+		}
+		var t0 = type(1) // t==="number"
+		var t1 = type(new Number(1)) // t==="number"
+		var t2 = type("abc") // t==="string"
+		var t3 = type(new String("abc")) // t==="string"
+		var t4 = type(true) // t==="boolean"
+		var t5 = type(undefined) // t==="undefined"
+		var t6 = type(null) // t==="null"
+		var t7 = type({}) // t==="object"
+		var t8 = type([]) // t==="array"
+		var t9 = type(new Date) // t==="date"
+		var t10 = type(/\d/) // t==="regexp"
+		var t11 = type(function(){}) // t==="function"
+		document.write(t0+'<br>');
+		document.write(t1+'<br>');
+		document.write(t2+'<br>');
+		document.write(t3+'<br>');
+		document.write(t4+'<br>');
+		document.write(t5+'<br>');
+		document.write(t6+'<br>');
+		document.write(t7+'<br>');
+		document.write(t8+'<br>');
+		document.write(t9+'<br>');
+		document.write(t10+'<br>');
+		document.write(t11+'<br>');
+
+	
+
+	</script>
+</body>
+</html>

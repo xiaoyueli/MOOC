@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ways of getting Object</title>
+</head>
+<body>
+	<h1>标题</h1>
+	<div class = "test1">
+		<p>p1</p>
+		<p>p2</p>
+		<p>p3</p>
+	</div>
+	<div class = "test2"></div>
+	<input type="text" name = "username" id="" value= "poly">
+</body>
+<script>
+	//用id找，返回值是Dom object
+	document.getElementById("test1");
+
+	//用标签名找， 返回的是HTMLcollection,类似对象的集合，操作方式类似数组
+	var p = document.getElementsByTagName("p").length;  //3
+	p[0].style.background = "green";
+
+	//对于表单元素，可通过name查找， 返回的是NodeList，类似对象集合，操作方式类似数组
+	var p = document.getElementsByName("username");
+	var result = p[0].value;	//poly
+
+	//通过class查找， 返回的是对象的集合，操作方式类似数组
+	document.getElementsByClassName("test2")[0].style.background = "grey";
+
+	//找子节点，返回的是对象的集合，操作方式类似数组
+	document.getElementById("test1").childNodes.length; //7		3个p标签和4个换行符
+	document.getElementById("test1").children.length; 	//3 	children非标准属性，但各浏览器兼容很好，它不包含空白节点，如换行
+</script>
+</html>

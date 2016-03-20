@@ -1,0 +1,90 @@
+RegExp
+*
+*
+http://www.w3school.com.cn/jsref/jsref_obj_regexp.asp
+*
+*
+
+1.create
+- var pat = /pattern/
+- var pat = new RegExp("pattern")
+
+2.regexObj.test(str) 	//测试字符串是否包含正则表达式指定字符串
+eg.
+	/1234/.test("212345") //true
+
+3.锚点
+- ^ : 匹配起始位置
+eg.
+	/^http:/.test("http:www.163.com") //true 测试以h开头
+
+- $ : 匹配结束位置
+
+-\b : 单词边界
+eg.
+	/\bis\b/.test("That is true") 	//true, is为完整单词
+
+-\d :[0-9]
+-\D :[^\d] 	//非数字开头
+
+-\s : space
+-\S :[^\s]
+
+-\w :[A-Za-z0-9_]
+-\W :[^\w]
+
+
+3. 量词
+- {m, n}: m到n次，
+-*: {0,}
+-?: {0,1}
+-+: {1,}
+
+eg.
+	/heeps?:/.test("http://www.163.com") //true
+	/heeps?:/.test("https://www.163.com") 	//true
+	/heeps?:/.test("httpss://www.163.com") 	//false s出现了2次
+
+	/^1\d{10}$/.test() 	//测试任意手机号码
+
+
+/*
+1）正则表达式中，常规的量词如*, +, ?, {min,max} 都具有贪婪性。它们总会尽可能的去匹配尽量多的字符串。
+2）*?, +?, ??, {min, max}? 这些量词称为懒惰模式（又叫最小匹配，非贪婪模式），与常规的量词相反，它们则会尽可能的匹配尽量少的字符串，只要满足条件即可。
+在常规的量词后面加上一个?便转化成了懒惰模式。
+
+eg.
+var str = 'aa',
+result_0 = '',
+result_1 = '',
+result_3 = '';
+//贪婪匹配：匹配尽可能多的字符。默认情况下都是贪婪匹配
+// 说明：/a+/可以匹配到1个a, 也能匹配到2个a, 匹配尽可能多的字符就是2个a
+result_0 = str.replace( /a+/, 'b' );
+console.log( result_0 );//结果是：'b'
+ 
+//惰性匹配：进行最小限度的匹配
+//在正则表达式后面加？号，实现惰性匹配。/a+/可以匹配到1个a, 也能匹配到2个a, 匹配尽可能少的字符就是1个a
+result_1 = str.replace( /a+?/, 'b' );
+console.log( result_1 );//结果是：'ba'
+ 
+//在全局匹配模式下,匹配所有可能的匹配结果,而不仅仅是第一个匹配结果
+result_2 = str.replace( /a+?/g, 'b' );
+console.log( result_2 );//结果是：'bb'
+ */
+
+
+4. regexpObj.exec(str)
+eg.
+	var reg = /(.)(\d+)/g;
+	var scores = 'Tom $88, Nicholas ￥100.';
+	var result;
+	while(result = reg.exec(scores)){
+	console.log(result); 			
+	console.log(reg.lastIndex);
+}
+
+>>>["$88", "$", "88", index:4, input:"Tom $88, Nicholas ￥100."]
+>>>7
+>>>["￥100", "￥", "100", index:18, input:"Tom $88, Nicholas ￥100."]
+>>>22

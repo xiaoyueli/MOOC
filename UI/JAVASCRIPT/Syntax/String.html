@@ -1,0 +1,48 @@
+String
+
+1. str.length
+eg.
+	"absc".length	//4
+
+2. str.charAt(index)
+eg.
+	"abcdefg".charAt(0)	//"a"
+
+3. str.indexOf(searchValue, index) 	//从index位开始查询，index可省略, searchValue 可以为单个字符或字符串，若为字符串返回第一个字母的位置，若未找到返回-1。 不能使用正则表达式
+
+4. str.search(/[]/) 	//可使用正则表达式
+eg.
+	"abcde123".search(/[0-9]/)	//5
+	"abcde123".search(/[A-Z]/)	//-1
+
+5. str.match(/[]/)
+	"abcde123".match(/[0-9]/)	//["1"]
+	"abcde123".match(/[0-9]/g)	//["1","2","3"]
+	"abcde123".match(/[A-Z]/)	//null
+
+6. str.replace(/[]/|"xxx", "new string")
+eg.
+	"abcde123".replace(/[0-9]/,"#")	//"abcde#23"
+	"abcde123".replace(/[0-9]/g,"#")	//"abcde###"
+	"abcde123".replace("123", "###")	//"abcde###"
+
+7. str.substring(indexA, indexB)	//不包含indexB，且可省略。
+
+8. str.slice(indexA, indexB)	//和substring的区别为slice可取负数，负数为从后往前数
+eg.
+	"abcdefg".slice(-4,-1)	//"def"
+
+9. str.substr(indexstart, length)	//length可省略
+
+10. str.split(separator, limit)		//limit表示需要输出的字符串数量，省略为全部输出
+eg.
+	"micro major".split(" ")	//["micro", "major"]
+	"micro2major".split(/[0-9]/)	//["micro", "major"]
+	
+11. str.toLowerCase()
+
+12. str.toUpperCase()
+
+13. String()
+eg.
+	String(123) 	//"123"

@@ -1,0 +1,36 @@
+statement
+
+
+for
+eg.
+
+	1. 	var n = [1,2,3,4,5];
+		for(var i = 0; i < n.length; i++){}
+		
+
+
+	2. for(var k in object){} 语句
+		var cat = {
+			name = "kitty",
+			age = 1,
+			gender = "female",
+		}
+		for(var p in cat)    //p 属性名, cat[p]属性值
+		{
+			document.write(p+":"+cat[p]);
+		}
+
+2. with(){}
+var cat = {
+	name : 'kitty';
+	color: {
+	name: 'red'
+	}
+}
+eg.
+	with(cat.color)
+	{
+		document.write(name);
+	}
+
+3. try{需要检测是否有错的语句} catch(Exception e){对错误进行的处理}finally{一定执行的语句}

@@ -1,0 +1,19 @@
+#a
+
+<a href="link地址" target = "_blank">显示的内容</a>
+
+target: 1. 缺省时在当前窗口打开
+		2. _blank在新窗口打开
+
+1. 用a标签定位
+eg.
+	<a name = "p1">定位到此处</a>
+	<a href="www.name.com#p1">点击此链接后直接到定位处</a>
+
+2. 选择器的应用
+	a {color:red} 				//未点击 == a:link {color:red} 这种表达方式低版本IE有兼容问题
+	a: visited {color: grey}
+	a: hover {color: blue} 		
+	a: active {color : black} 	//鼠标点击的一瞬间，或鼠标点住不放的状态
+	
+	notice: active一般不设置，设置顺便如上，不能颠倒，lvha

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>compatible bind</title>
+</head>
+<body>
+	<script type="text/javascript">
+		if (!Function.prototype.bind) {
+			Function.prototype.bind = function()
+			{
+				var methed = this;
+				var args = Array.prototype.slice.call(arguments);
+				var object = args.shift();
+				return function()
+				{
+					return methed.apply(object, args);
+				}
+				
+			}
+		};
+		function move(x, y) {
+	    this.x += x;
+	    this.y += y;
+		}
+		var point = {x:1, y:2};
+		var pointmove = move.bind(point, 2, 2);
+		pointmove(); 
+		console.log(point);
+	</script>
+</body>
+</html>

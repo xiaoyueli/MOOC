@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fibonacci Sequence</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var fibonacci = function(n)
+		{
+			if (n === 0) {
+				return 0;
+			}
+			else if (n === 1) {
+				return 1;
+			}
+			else
+			{
+				return fibonacci(n-1) + fibonacci(n-2);
+			}
+		}
+
+		var num = fibonacci(5);
+		document.write(num);
+	</script>
+</body>
+</html>

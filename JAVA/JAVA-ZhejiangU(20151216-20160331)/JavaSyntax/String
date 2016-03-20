@@ -1,0 +1,9 @@
+#String
+
+1. String.format("格式"，值);
+eg.
+	public String toString()
+	{
+		String time = String.format("%02d:%02d:%02d", hour, minute, second);
+		return time;
+	}

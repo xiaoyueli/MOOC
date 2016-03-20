@@ -1,0 +1,9 @@
+#server build
+
+1. Tomcat7.0 -> webapps -> web applications
+
+2. 一个文件夹是一个web application 目录
+
+3. 文件夹根目录放 web 资源，例如html文件
+
+4. 每一个web 应用根目录配置一个WEB-INF文件，存lib文件夹（存jar包）、web.xml(web应用配置文件)

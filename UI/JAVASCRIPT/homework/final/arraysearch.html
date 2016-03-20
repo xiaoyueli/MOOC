@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+	function search(arr, value)
+	{
+		var lower = 0;
+		var upper = arr.length;
+		var mid = 0;
+		do{
+		mid = Math.floor((lower+upper)/2);
+		if (arr[0] == value) {
+			return 0;
+		}
+		else if(arr[mid] == value)
+		{
+			return mid;
+		}
+		else if (arr[mid] < value) {
+			lower = mid;
+		}
+		else{
+			upper = mid;
+		};
+		}while((upper-lower)>1);
+		
+		return null;
+	}
+	var arr = [1, 2, 4, 6, 7, 9, 19,20, 30, 40, 45, 47];
+	alert(search(arr, 45));
+</script>
+</html>

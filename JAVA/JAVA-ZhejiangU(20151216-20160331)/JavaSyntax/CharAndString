@@ -1,0 +1,30 @@
+#CharAndString
+
+1. char a = 'A';  //char用单引号
+   char a = 65;	//65是A的unicode编码，会自动转换成A
+   char a = '\u0041'	//65的十六进制
+ 
+2. char a = 'A';
+	char b = 'D';
+	int dif = b - a; // dif: 3
+	
+3. 小写字母排在大写字母后
+	‘小写字母’>‘大写字母’
+	
+4. 大小写转换
+	char c = 'a';
+	char d = (char)(c + 'A'-'a';);
+	
+	
+	
+1.create 
+	String s;
+	String s = new String("hello world!");  //字符串对象存的是字符串地址
+	String s = "hello world";
+	
+2. 比较字符串: s1.equal(s2);
+   s1 == s2  //比较的是否是指向同一个字符串地址。
+   
+3. s1.length();
+
+4. 字符串不能用for-each取每个字符

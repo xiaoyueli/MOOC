@@ -1,0 +1,10 @@
+#VariableAndConstant
+
+1. final //定义常量关键字
+final int price = 100;
+
+2. java不能重复定义变量。
+
+3. 函数中的本地变量不会被默认初始化。
+
+4. 类中的成员变量会被默认初始化，int = 0, boolean = false, object = null.

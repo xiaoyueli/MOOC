@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>escape HTML</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var escapeHTML = function(str)
+		{
+			str = str.replace(/[<>"&]/g, function(element){
+				switch(element)
+				{
+					case "<": return "&amp;lt;"; 
+					case ">": return "&amp;gt;"; 
+					case "\"": return "&amp;quot;";
+					case "&": return "&amp;amp;";
+				}
+			})
+			document.write(str+"<br>");
+		}
+
+		escapeHTML('<div>Tom&Jerry</div> ');
+		escapeHTML('<input type="text" name="mobile"> '); 
+
+	</script>
+</body>
+</html>

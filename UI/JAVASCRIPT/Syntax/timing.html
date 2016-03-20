@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>timing</title>
+	<style>
+		#change {
+			width: 200px;
+			height: 200px;
+			background-color: pink;
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<div id = "change"></div>
+	
+</body>
+<script type="text/javascript">
+	
+	function getStyle(obj, att)
+	{
+		return obj.currentStyle? obj.currentStyle[att] : getComputedStyle(obj, null)[att];
+	}
+	
+	function change()
+	{
+		var obj = document.getElementById("change");
+		var original = getStyle(obj, "borderWidth");
+		obj.style.borderWidth = parseInt(original) + 1 +"px";
+		// if (parseInt(original) != 10)	//方法一
+		// setTimeout("change()", 1000); 
+
+		if (parseInt(original) == 10) {		//方法二
+			clearInterval(clock);
+		};
+	}
+	//setTimeout("function()",time) , 只执行一次
+	//setInterval("function()", time), 一直执行，直到用clearInterval()清除
+	
+	// setTimeout("change()", 1000);    //方法一
+
+	var clock = setInterval("change()", 1000);   	//方法二
+	
+</script>
+</html>

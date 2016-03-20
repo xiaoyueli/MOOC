@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>circle</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function Circle(r)
+		{
+			this.r = r;
+		}
+		Circle.prototype.area = function()
+		{
+			return (Math.PI*this.r*this.r).toFixed(2);
+		}
+		Circle.prototype.perimeter = function()
+		{
+			return (2*Math.PI*this.r).toFixed(2);
+		}
+
+		var cir = new Circle(2);
+		document.write('area: '+cir.area()+'<br>');
+		document.write('perimeter: '+cir.perimeter()+'<br>');
+	</script>
+</body>
+</html>

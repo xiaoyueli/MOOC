@@ -1,0 +1,19 @@
+#breakAndcontinue
+
+1. lable:
+	break lable;
+在循环前用lable标记此循环，break lable;表示跳出被标记的循环； //same with continue
+
+OUT:
+for(int i = 0; i< 9; i++)
+{
+	for(int j = 0; j < 9; j++)
+	{
+		for(int k = 0; k < 9; k ++)
+		{
+			if(i + j + k = 9)
+				break OUT;		//跳出所有循环
+		}
+	}
+}
+		

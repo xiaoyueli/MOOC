@@ -1,0 +1,28 @@
+#InputAndOutput
+
+1. 	System.out.println("this is a "+ apple);
+	System.out.print();
+	System.out.prinf("%.2f", floatNum);   //带格式输出，保留2位小数
+	
+2.	Scanner in = new Scanner(System.in);
+	in.nextline(); 	//读入整行
+	in.next(); 		//读入一个词
+	in.nextInt(); 	//读入一个整数
+	
+	
+3. in.close();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

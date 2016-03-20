@@ -1,0 +1,29 @@
+transform
+
+1. transform: none|<transform-function>+  
+<transform-fun> :
+	1. rotate(<angle>) 	eg. transform:rotate(180deg) 
+	2. translate( px|% || px|% )	eg. transform: translate(10%, 10%)	//第一个值为x,第二个值为y（可省略, 即未设置），%以元素自身高宽为参照物
+	3. translateX(px|%) | translateY(px|%)
+	4. scale(<number>[,number]?)	//第一个值为x,第二个值为y（可省略, 默认与第一个值相等）
+	5. scaleX() | scaleY() 			eg. transform: scale(1.2, 2) //X轴放大1.2倍, Y轴2倍
+	6. skew(<angle>[,angle]?)	//第一个值，Y轴向X轴倾斜的角度,逆时针为正； 第二个值，X向Y轴倾斜，顺时针为正（可省略，为未设置）
+	7. skewX() | skewY() 	eg. transform: skew(30deg, 30deg)
+
+eg. transform: translate(50%) rotate(90deg)
+//排列顺序不同，变化顺序不同
+//旋转之后再移动，移动方向以变化前的轴线方向为准（整个坐标系已跟着移动）
+
+2. transform-origin: 50% 50% (default) 		//定位坐标轴位置
+	1.[left|right|top|bottom|center|px|%]
+	//只有一个值时，第二个值默认50%
+
+	2.[left|right|center|px|%] [top|bottom|center|px|%] <px>?
+	//第三个值是三维坐标，z, 面向自己为正
+	eg. transform-origin: right bottom 20px
+		transform-origin: left 100%
+
+3.  rotate //平面旋转
+	rotateY	//三维旋转， 右边远离自己为正
+	rotateX	//下面远离自己为正 
+	rotateZ == rotate

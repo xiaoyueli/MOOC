@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>add Element</title>
+</head>
+<body>
+	<button type= "button" onclick= "add()">add</button>
+	<ul></ul>
+
+	<button type= "button" onclick= "add2()">other add</button>
+	<ol></ol>
+</body>
+<script type="text/javascript">
+	
+	//方法一，通过innerHTML
+	function add()
+	{
+		var list = document.getElementsByTagName("ul")[0];
+		list.innerHTML += "<li>one</li>" //innerHTML 不是标准W3C语句，但各浏览器兼容很好
+	}
+
+	//方法二，标准方法，比较繁琐
+	function add2()						
+	{
+		var li = document.createElement("li");
+		var text = document.createTextNode("hi,there");
+		li.appendChild(text);
+		document.getElementsByTagName("ol")[0].appendChild(li);
+	}
+</script>
+</html>
