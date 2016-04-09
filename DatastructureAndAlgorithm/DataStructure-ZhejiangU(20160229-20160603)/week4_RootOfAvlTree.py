@@ -78,7 +78,6 @@ def leftBalance(tree):
         tree.setBF(EQ)
         lchild.setBF(EQ)
         tree = r_Rotate(tree)
-
     else:
         lrchild = lchild.getRchild()
         if lrchild.getBF() == EQ:
