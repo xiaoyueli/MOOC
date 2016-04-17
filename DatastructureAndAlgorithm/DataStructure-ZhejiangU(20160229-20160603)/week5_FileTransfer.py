@@ -1,95 +1,74 @@
-"""
-有瑕疵，超时运行，需优化
-"""
-def union(cmp1, cmp2):
-    group = cmp1
-    group.extend(cmp2)
-    return list(set(group))
+import math
 
-def contain(group, idx, cmpu):
-    if not group:
-        return False
-    else:
-        group = list(group)
-        group.insert(0, None)
-        if idx < len(group):
-            if group[idx] == cmpu:
-                return True
-            elif cmpu > group[idx]:
-                if contain(group[1:], 2 * idx, cmpu):
-                    return True
-                elif:
-                    return contain(group[1:], 2 * idx + 1, cmpu)
+def connected_set(com_set):
+    cnt = 0
+    for idx in range(1, len(com_set) + 1):
+        if com_set[idx] < 0:
+            cnt += 1
+    return cnt
 
+
+def checking(com_set, cmp1, cmp2):
+    root1 = find_root(com_set, cmp1)
+    root2 = find_root(com_set, cmp2)
+
+    if root1 == root2 and root1 > 0:
+        return True
     return False
 
+def find_root(com_set, cmp):
+    par = cmp
 
+    while cmp > 0:
+        par = cmp
+        cmp = com_set[cmp]
 
+    return par
 
-def connect(group, cmp1, cmp2):
-    if not group:
-        group.append(union([cmp1], [cmp2]))
-    else:
-        temp_g1 = []
-        temp_g2 = []
-        for sub_g in list(group):
-            if contain(sub_g, 1, cmp1):
-                temp_g1 = sub_g
-                group.remove(sub_g)
-            if contain(sub_g, 1, cmp2):
-                temp_g2 = sub_g
-                group.remove(sub_g)
-
-        if temp_g1 and temp_g2:
-            group.append(union(temp_g1, temp_g2))
-        elif temp_g1:
-            group.append(union(temp_g1, [cmp2]))
-        elif temp_g2:
-            group.append(union(temp_g2, [cmp1]))
+def connecting(com_set, cmp1, cmp2):
+    if not checking(com_set, cmp1, cmp2):
+        root1 = find_root(com_set, cmp1)
+        root2 = find_root(com_set, cmp2)
+        val1 = math.fabs(com_set[root1])
+        val2 = math.fabs(com_set[root2])
+        if val1 > val2:
+            com_set[root2] = root1
+            com_set[root1] = -val1
+        elif val1 < val2:
+            com_set[root1] = root2
+            com_set[root2] = -val2
         else:
-            group.append(union([cmp1], [cmp2]))
-            
-    return group
-            
-
-def check(group, cmp1, cmp2):
-    for sub_g in group:
-        if contain(sub_g, 1, cmp1) and contain(sub_g, 1, cmp2):
-            return True
-
-    return False			
-
-
-def is_connected(group, total):
-    cmp_sum = 0
-    for sub_g in group:
-        cmp_sum += len(sub_g)
-
-    if cmp_sum  == total:
-        print("The network is connected.")
-    else:
-        print("There are " + str(len(group) + total - cmp_sum) + " components.")
+            com_set[root2] = root1
+            com_set[root1] = -(val1 + 1)
 
 
 def main():
+    amo = int(input())
 
-    total = int(input())
-    case = input()
-    group = []
-    while case != "S":
-        case = case.split()
-        if case[0] == "I":
-            group = connect(group, int(case[1]), int(case[2]))
-        elif case[0] == "C":
-            if check(group, int(case[1]), int(case[2])):
+    com_set = {}
+    for idx in range(1, amo + 1):
+        com_set[idx] = -1
+
+    info = input()
+    while info != "S":
+        info_lst = info.split() 
+        act = info_lst[0]
+        cmp1 = int(info_lst[1])
+        cmp2 = int(info_lst[2])
+        if act == "I":
+            connecting(com_set, cmp1, cmp2)
+        elif act == "C":
+            if checking(com_set, cmp1, cmp2):
                 print("yes")
             else:
                 print("no")
+        info = input()
 
-        case = input()
-
-    is_connected(group, total)
-        
+    total = connected_set(com_set)
+    if total == 1:
+        print("The network is connected.")
+    else:
+        print("There are "+ str(total) + " components.")
         
         
 main()

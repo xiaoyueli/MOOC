@@ -1,70 +1,118 @@
-"""
-第二组数据未通过
-"""
+class Node:
+    """docstring for Node"""
+    def __init__(self, value, l_son = None, r_son = None, visited = False):
+        self._value = value
+        self._l_son = l_son
+        self._r_son = r_son
+        self._visited = visited
 
-def buildTree(nodes):
-    info = input().split()
-    tree = {}
-    root = int(info[0])
-    tree[root] = [None, None, 0]
-    for idx in range(1, nodes):
-        insertNode(tree, root, int(info[idx]))
-    return tree, root
+    def get_value(self):
+        return self._value
 
-def insertNode(tree, root, value):
-    assert tree, "Tree can not be empty."
-    if value < root:
-        if tree[root][0] == None:
-            tree[root][0] = value
-            tree[value] = [None, None, 0]
+    def get_lson(self):
+        return self._l_son
+
+    def set_lson(self, son):
+        self._l_son = son
+
+    def get_rson(self):
+        return self._r_son
+
+    def set_rson(self, son):
+        self._r_son = son
+
+    def get_visited(self):
+        return self._visited
+
+    def set_visited(self, value):
+        self._visited = value
+
+
+def check_node(tree, value):
+
+    if value > tree.get_value():
+        rson = tree.get_rson()
+        if rson and not rson.get_visited():
+            rson.set_visited(True)
+            if rson.get_value() == value:
+                return True
+            else:
+                return False
+        elif rson:
+            return check_node(rson, value)
         else:
-            insertNode(tree, tree[root][0], value)
-    elif value > root:
-        if tree[root][1] == None:
-            tree[root][1] = value
-            tree[value] = [None, None, 0]
-        else:
-            insertNode(tree, tree[root][1], value)
-    else:
-        assert False, "The same node already exists."	
-    
-def isSameTree(proto, root, new_tseq):
-    tree = dict(proto)
-    for nodeValue in new_tseq:
-        if not checkNode(tree, root, int(nodeValue)):
             return False
-        
-    return True 
 
-def checkNode(tree, root, nodeValue):
-    if root == nodeValue and not tree[root][2]:
-        tree[root][2] = 1
-        return True
-    elif root < nodeValue and tree[root][2]:
-        return checkNode(tree, tree[root][1], nodeValue)
-    elif root > nodeValue and tree[root][2]:
-        return checkNode(tree, tree[root][0], nodeValue)
-    else:
+    elif value < tree.get_value():
+        lson = tree.get_lson()
+        if lson and not lson.get_visited():
+            lson.set_visited(True)
+            if lson.get_value() == value:
+                return True
+            else:
+                return False
+        elif lson:
+            return check_node(lson, value)
+        else:
+            return False
+
+def is_same_bt(proto, seq):
+    if not seq:
         return False
+    root = int(seq.pop(0))
+    if root != proto.get_value():
+        return False
+    proto.set_visited(True)
+    while seq:
+        value = int(seq.pop(0))
+        if not check_node(proto, value):
+            return False
 
+    return True
+
+
+def insert_node(root, value):
+    if value < root.get_value():
+        lson = root.get_lson()
+        if lson:
+            insert_node(lson, value)
+        else:
+            root.set_lson(Node(value))
+    elif value > root.get_value():
+        rson = root.get_rson()
+        if rson:
+            insert_node(rson, value)
+        else:
+            root.set_rson(Node(value))
+
+def build_binary_tree(seq):
+    if not seq:
+        return None
+
+    root = Node(int(seq.pop(0)))
+
+    while seq:
+        value = int(seq.pop(0))
+        insert_node(root, value)
+
+    return root
 
 def main():
-    info = input().split()
-    nodes_num = int(info[0])
+    info = input()
+    while info != "0":
 
-    while nodes_num != 0:
-        if len(info) > 1:
-            trees_num = int(info[1])
-        proto_tree = buildTree(nodes_num)
-        tree = proto_tree[0]
-        root = proto_tree[1]
-        for _ in range(trees_num):
-            tree_seq = input().split()
-            if isSameTree(tree, root, tree_seq):
+        case_num = int(info.split()[1])
+
+        proto = input().split()
+
+        for dummy in range(case_num):
+            pro_t = build_binary_tree(list(proto))
+            tree = input().split()
+            if is_same_bt(pro_t, tree):
                 print("Yes")
             else:
                 print("No")
 
-        info = input().split()
-        nodes_num = int(info[0])
+        info = input()
+
 main()
