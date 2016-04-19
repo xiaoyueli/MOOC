@@ -33,10 +33,8 @@ def connecting(com_set, cmp1, cmp2):
         val2 = math.fabs(com_set[root2])
         if val1 > val2:
             com_set[root2] = root1
-            com_set[root1] = -val1
         elif val1 < val2:
             com_set[root1] = root2
-            com_set[root2] = -val2
         else:
             com_set[root2] = root1
             com_set[root1] = -(val1 + 1)
