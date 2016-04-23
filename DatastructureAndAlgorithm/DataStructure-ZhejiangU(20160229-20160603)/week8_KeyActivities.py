@@ -1,107 +1,162 @@
-def compute_key_road(end_p, pre_points, earlist_time):
+def initilize_point_info(num):
+    earliest = {}
+    pre_points = {}
+    end_points = []
+    sta_points = []
+    latest = {}
+    post_points = {}
+    for idx in range(1, num + 1):
+        earliest[idx] = -1
+        pre_points[idx] = []
+        end_points.append(idx)
+        sta_points.append(idx)
+        latest[idx] = -1
+        post_points[idx] = []
 
+    return earliest, pre_points, end_points, sta_points, latest, post_points
+
+def check(pre_points, sta_p, end_p):
     pres = pre_points[end_p]
-    if not pres:
-        return True
-    earlist_t = earlist_time[end_p]
-    flag = False
-    for p_info in pres:
-        point =p_info[0]
-        last_t = p_info[1]
-        latest_t = earlist_t - last_t
-        if latest_t == earlist_time[point] and compute_key_road(point, pre_points, earlist_time):
-            print(str(point) + "->" + str(end_p))
-            flag = True
-
-    return flag
-            
-
-def get_earliest_time(earlist_time, end_points):
-    ear_time = 0
-
-    for point in end_points:
-        temp = earlist_time[point]
-        if temp > ear_time:
-            ear_time = temp
-            end_p = point
-
-    return end_p, ear_time
-
-def check_pre_point(pre_points, sta_p, end_p):
-    pres = pre_points[end_p]
-
     for point in pres:
-        if sta_p == point[0]:
+        if point[0] == sta_p:
             return True
-
+        else:
+            if check(pre_points, sta_p, point[0]):
+                return True
     return False
 
-def remove_point(end_points, sta_p):
-    
-    for point in end_points:
-        if sta_p == point:
-            end_points.remove(point)
+def remove_point(points, point):
+
+    for item in points:
+        if item == point:
+            points.remove(item)
             break
 
-def update_point_info(pre_points, dir_pre_points, end_points, sta_p, end_p, last_time):
-    pre_points[end_p].append([sta_p, last_time])
-    dir_pre_points[end_p].insert(0, [sta_p, last_time])
-    remove_point(end_points, sta_p)
+def update_points_info(pre_points, sta_points, end_points, sta_point, end_point, last_time, post_points):
+    pre_points[end_point].append([sta_point, last_time])
+    post_points[sta_point].insert(0, end_point)
+    remove_point(end_points, sta_point)
+    remove_point(sta_points, end_point)
 
-    pres = pre_points[sta_p]
-    for point in pres:
-        pre_points[end_p].append(point)
 
-def printout_key_road(key_road):
-    key_road.sort()
-    roads = set(key_road)
-    for item in roads:
-        print(str(item[0]) + "->" + str(item[1]))
+def compute_earliest_time(pre_points, ear_times, point):
+    pres = pre_points[point]
 
-def read_activity_info(info, num):
-    pre_points = info[0]
-    dir_pre_points = info[1]
-    earlist_time = info[2]
-    end_points = info[3]
+    earliest = -1
+    for pre_info in pres:
+        pre_p = pre_info[0]
+        last_time = pre_info[1]
+        if ear_times[pre_p] < 0:
+            ear_times[pre_p] = compute_earliest_time(pre_points, ear_times, pre_p)
+        if earliest < ear_times[pre_p] + last_time:
+            earliest = ear_times[pre_p] + last_time
+
+    return earliest
+                        
+
+def get_earliest_time(act_info, num):
+    ear_times = act_info[0]
+    pre_points = act_info[1]
+    end_points = act_info[2]
+    late_times = act_info[4]
+    
+    earliest = -1
+    key_points = []
+    for point in end_points:
+        ear_times[point] = compute_earliest_time(pre_points, ear_times, point)
+        if earliest < ear_times[point]:
+            earliest = ear_times[point]
+            key_points = [point]
+        elif earliest == ear_times[point]:
+            key_points.append(point)
+    
+    for key_p in key_points:
+        late_times[key_p] = earliest
+    return earliest
+
+def read_activity_info(ori_info, num):
+    ear_times = ori_info[0]
+    pre_points = ori_info[1]
+    end_points = ori_info[2]
+    sta_points = ori_info[3]
+    post_points = ori_info[5]
 
     for dummy in range(num):
-        act_info = input().split()
-        sta_p = int(act_info[0])
-        end_p = int(act_info[1])
-        last_time = int(act_info[2])
-        new_ear_time = earlist_time[sta_p] + last_time
-        if new_ear_time > earlist_time[end_p]:
-            earlist_time[end_p] = new_ear_time
-        update_point_info(pre_points, dir_pre_points, end_points, sta_p, end_p, last_time)
+        info = input().split()
+        sta_point = int(info[0])
+        end_point= int(info[1])
+        last_time = int(info[2])
+        update_points_info(pre_points, sta_points, end_points, sta_point, end_point, last_time, post_points) 
+        if check(pre_points, end_point, sta_point):
+            return -1
 
-        if check_pre_point(pre_points, end_p, sta_p):
-            print(0)
-            return
+    for point in sta_points:
+        ear_times[point] = 0
+        
+            
+    return  ori_info
 
-    earlist_time_info = get_earliest_time(earlist_time, end_points)
-    print(earlist_time_info[1])
-    compute_key_road(earlist_time_info[0], dir_pre_points, earlist_time)
+def compute_latest_time(pre_points, ear_times, late_times, point):
+    pres = pre_points[point]
 
-def initilize_points(num):
-    pre_points = {}
-    dir_pre_points = {}
-    earlist_time = {}
-    end_points = []
+    if not pres:
+        late_times[point] = 0
+        return True
+    else:
+        flag = False
+        for pre_info in pres:
+            pre_p = pre_info[0]
+            last_time = pre_info[1]
+            if ear_times[pre_p] + last_time == late_times[point]:
+                late_times[pre_p] = late_times[point] - last_time
+                if compute_latest_time(pre_points, ear_times, late_times, pre_p):
+                    flag = True
+                else:
+                    late_times[pre_p] = -1
+        return flag
 
-    for idx in range(1, num + 1):
-        pre_points[idx] = []
-        dir_pre_points[idx] = []
-        earlist_time[idx] = 0
-        end_points.append(idx)
+def printout_key_road(late_times, post_points, point):
 
-    return pre_points, dir_pre_points, earlist_time, end_points
+    posts = post_points[point]
+
+    for pos_p in posts:
+        if late_times[pos_p] > 0:
+            print(str(point) + "->" + str(pos_p))
+            printout_key_road(late_times, post_points, pos_p)
+
+def get_key_road(act_info):
+    ear_times = act_info[0]
+    pre_points = act_info[1]
+    end_points = act_info[2]
+    sta_points = act_info[3]
+    late_times = act_info[4]
+    post_points = act_info[5]
+
+
+    for point in end_points:
+        if late_times[point] > 0:
+            compute_latest_time(pre_points, ear_times, late_times, point)
+
+
+    for point in sta_points:
+        if late_times[point] == 0:
+            printout_key_road(late_times, post_points, point)
 
 def main():
     info = input().split()
     points = int(info[0])
     activities = int(info[1])
 
-    ori_info = initilize_points(points) 
-    read_activity_info(ori_info, activities)
+    ori_info = initilize_point_info(points)
+
+    act_info = read_activity_info(ori_info, activities)
+    
+    if act_info == -1:
+        print(0)
+    else:
+        earliest = get_earliest_time(act_info, points)
+        print(earliest)
+
+        get_key_road(act_info)
 
 main()

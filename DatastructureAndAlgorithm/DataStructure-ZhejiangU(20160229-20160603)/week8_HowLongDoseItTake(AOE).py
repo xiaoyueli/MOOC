@@ -1,65 +1,85 @@
 def initilize_point_info(num):
-
     earliest = {}
     pre_points = {}
     end_points = []
+    sta_points = []
     for idx in range(num):
-        earliest[idx] = 0
+        earliest[idx] = -1
         pre_points[idx] = []
         end_points.append(idx)
+        sta_points.append(idx)
 
-    return earliest, pre_points, end_points
+    return earliest, pre_points, end_points, sta_points
 
 def check(pre_points, sta_p, end_p):
     pres = pre_points[end_p]
     for point in pres:
-        if sta_p == point:
+        if point[0] == sta_p:
             return True
-    
+        else:
+            if check(pre_points, sta_p, point[0]):
+                return True
     return False
 
-def remove_point(end_points, point):
+def remove_point(points, point):
 
-    for item in end_points:
+    for item in points:
         if item == point:
-            end_points.remove(item)
+            points.remove(item)
             break
 
-def update_points_info(pre_points, end_points, sta_point, end_point):
-    pre_points[end_point].append(sta_point)
+def update_points_info(pre_points, sta_points, end_points, sta_point, end_point, last_time):
+    pre_points[end_point].append([sta_point, last_time])
     remove_point(end_points, sta_point)
-    for pre_p in pre_points[sta_point]:
-        pre_points[end_point].append(pre_p)
+    remove_point(sta_points, end_point)
 
-def get_earliest_time(ear_times, end_points):
-    earliest_time = -1
+
+def compute_earliest_time(pre_points, ear_times, point):
+    pres = pre_points[point]
+
+    earliest = -1
+    for pre_info in pres:
+        pre_p = pre_info[0]
+        last_time = pre_info[1]
+        if ear_times[pre_p] < 0:
+            ear_times[pre_p] = compute_earliest_time(pre_points, ear_times, pre_p)
+        if earliest < ear_times[pre_p] + last_time:
+            earliest = ear_times[pre_p] + last_time
+
+    return earliest
+                        
+
+def get_earliest_time(act_info, num):
+    ear_times = act_info[0]
+    pre_points = act_info[1]
+    end_points = act_info[2]
+    
+    earliest = -1
     for point in end_points:
-        temp = ear_times[point]
-        if temp > earliest_time:
-            earliest_time = temp
-
-    return earliest_time
+        ear_times[point] = compute_earliest_time(pre_points, ear_times, point)
+        if earliest < ear_times[point]:
+            earliest = ear_times[point]
+    return earliest
 
 def read_activity_info(ori_info, num):
     ear_times = ori_info[0]
     pre_points = ori_info[1]
     end_points = ori_info[2]
+    sta_points = ori_info[3]
 
     for dummy in range(num):
         info = input().split()
         sta_point = int(info[0])
         end_point= int(info[1])
         last_time = int(info[2])
-        end_time = ear_times[sta_point] + last_time
-        if end_time > ear_times[end_point]:
-            ear_times[end_point] = end_time
-        update_points_info(pre_points, end_points, sta_point, end_point)	
+        update_points_info(pre_points, sta_points, end_points, sta_point, end_point, last_time) 
         if check(pre_points, end_point, sta_point):
             return -1
-            
-    
-    earliest = get_earliest_time(ear_times, end_points) 
-    return 	earliest
+
+    for point in sta_points:
+        ear_times[point] = 0
+                
+    return  ori_info
 
 
 def main():
@@ -69,11 +89,12 @@ def main():
 
     ori_info = initilize_point_info(points)
 
-    earliest = read_activity_info(ori_info, edges)
+    act_info = read_activity_info(ori_info, edges)
     
-    if earliest == -1:
+    if act_info == -1:
         print("Impossible")
     else:
+        earliest = get_earliest_time(act_info, points)
         print(earliest)
 
 main()
