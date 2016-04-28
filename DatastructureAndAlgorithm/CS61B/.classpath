@@ -4,6 +4,9 @@
 	<classpathentry kind="src" path="Lab"/>
 	<classpathentry kind="src" path="HomeWork"/>
 	<classpathentry kind="src" path="Algorithm"/>
+	<classpathentry excluding="project1/docs/" kind="src" path="Project"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/Elyn/MOOC/DatastructureAndAlgorithm/CS61B/Project/project1/docs/jai_codec.jar"/>
+	<classpathentry kind="lib" path="D:/Elyn/MOOC/DatastructureAndAlgorithm/CS61B/Project/project1/docs/jai_core.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

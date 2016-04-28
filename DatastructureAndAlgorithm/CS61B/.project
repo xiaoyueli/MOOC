@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>Project/project1/docs</name>
+			<type>2</type>
+			<location>D:/Elyn/MOOC/DatastructureAndAlgorithm/CS61B/Project/project1/docs</location>
+		</link>
+	</linkedResources>
 </projectDescription>
