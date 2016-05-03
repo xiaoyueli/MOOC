@@ -25,6 +25,7 @@ package project1;
 
 import java.util.Iterator;
 
+
 public class RunLengthEncoding implements Iterable {
 
   /**

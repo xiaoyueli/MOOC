@@ -1,0 +1,14 @@
+variables:
+variables can only invoke the method its static type has, no matter the virtual type.
+
+fields:
+fields always depend on the static type when invoked.
+super.field equals value of superclass's field even if the virtual object is subclass.
+
+methods:
+virtual methods performed always depend on the virtual object, no matter how to cast.
+if the actual instance is created by subclass, even if it's been casted to superclass,
+the overridden method always executes the method of the subclass, vise versa.
+
+
+

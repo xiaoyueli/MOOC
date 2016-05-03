@@ -1,3 +1,4 @@
+
 def initilize_point_info(num):
     earliest = {}
     pre_points = {}
@@ -84,9 +85,10 @@ def read_activity_info(ori_info, num):
     for dummy in range(num):
         info = input().split()
         sta_point = int(info[0])
-        end_point= int(info[1])
+        end_point = int(info[1])
         last_time = int(info[2])
-        update_points_info(pre_points, sta_points, end_points, sta_point, end_point, last_time, post_points) 
+        update_points_info(pre_points, sta_points, end_points, \
+            sta_point, end_point, last_time, post_points) 
         if check(pre_points, end_point, sta_point):
             return -1
 
@@ -115,20 +117,11 @@ def compute_latest_time(pre_points, ear_times, late_times, point):
                     late_times[pre_p] = -1
         return flag
 
-def printout_key_road(late_times, post_points, point):
-
-    posts = post_points[point]
-
-    for pos_p in posts:
-        if late_times[pos_p] > 0:
-            print(str(point) + "->" + str(pos_p))
-            printout_key_road(late_times, post_points, pos_p)
 
 def get_key_road(act_info):
     ear_times = act_info[0]
     pre_points = act_info[1]
     end_points = act_info[2]
-    sta_points = act_info[3]
     late_times = act_info[4]
     post_points = act_info[5]
 
@@ -137,10 +130,13 @@ def get_key_road(act_info):
         if late_times[point] > 0:
             compute_latest_time(pre_points, ear_times, late_times, point)
 
+    for point in range(1, len(pre_points)):
+        if late_times[point] >= 0:
+            nexts = post_points[point]
+            for next_p in nexts:
+                if late_times[next_p] > 0:
+                    print(str(point) + "->" + str(next_p))
 
-    for point in sta_points:
-        if late_times[point] == 0:
-            printout_key_road(late_times, post_points, point)
 
 def main():
     info = input().split()
@@ -160,3 +156,5 @@ def main():
         get_key_road(act_info)
 
 main()
+
+
