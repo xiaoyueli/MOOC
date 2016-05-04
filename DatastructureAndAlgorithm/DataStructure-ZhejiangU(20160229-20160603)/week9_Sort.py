@@ -37,7 +37,7 @@ def insertSort(lst):
                 sub[idx] = sub[idx - 1]
                 sub[idx - 1] = temp
             else:
-                break;				
+                break              
     new = []
     for item in lst:
         insertSub(new, item)
@@ -96,9 +96,9 @@ def heapSort(lst, nums):
     return lst
 
 
-def unionSort(lst, nums):
+def mergeSort(lst, nums):
 
-    def union(lst, other, fir, sec, sec_end):
+    def merge(lst, other, fir, sec, sec_end):
         idx_f = fir
         idx_s = sec
         idx_o = fir
@@ -125,13 +125,13 @@ def unionSort(lst, nums):
 
             
     
-    def unionSub(lst, other, length):
+    def mergeSub(lst, other, length):
         idx = 0
         while idx < len(lst)- 2 * length:
-            union(lst, other, idx, idx + length, idx + 2 * length -1)
+            merge(lst, other, idx, idx + length, idx + 2 * length -1)
             idx += 2 * length
         if idx + length < len(lst):
-            union(lst, other, idx, idx + length, len(lst) - 1)
+            merge(lst, other, idx, idx + length, len(lst) - 1)
         else:
             while idx < len(lst):
                 other[idx] = lst[idx]
@@ -141,9 +141,9 @@ def unionSort(lst, nums):
     other = [0] * nums
 
     while length < nums:
-        unionSub(lst, other, length)
+        mergeSub(lst, other, length)
         length *= 2
-        unionSub(other, lst, length)
+        mergeSub(other, lst, length)
         length *= 2
 
     return lst
@@ -160,7 +160,7 @@ def main():
     #sorted_list = insertSort(lst)
     #sorted_list = shellSort(lst, nums)
     sorted_list = heapSort(lst, nums)
-    #sorted_list = unionSort(lst, nums)
+    #sorted_list = mergeSort(lst, nums)
 
     printList(sorted_list)
 
