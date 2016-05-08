@@ -1,5 +1,7 @@
 package list;
 
+import com.sun.corba.se.impl.orbutil.graph.NodeData;
+
 /* DList.java */
 
 /**
@@ -135,6 +137,7 @@ public class DList extends List {
   public ListNode back() {
     return head.prev;
   }
+  
 
   /**
    *  toString() returns a String representation of this DList.
