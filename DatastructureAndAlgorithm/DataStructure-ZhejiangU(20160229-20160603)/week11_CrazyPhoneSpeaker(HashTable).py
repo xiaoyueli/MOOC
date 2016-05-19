@@ -23,6 +23,8 @@ class Phone:
         
 
 def isPrime(number):
+    if number < 2:
+        return False
     for divisor in range(2, number):
         if number % divisor == 0:
             return False
@@ -62,7 +64,7 @@ def calcuateHashCode(number, hashtable_info):
     return hashcode
 
 def insertPhone(hashtable, phone_number, hashcode):
-    if hashtable[hashcode] == None:
+    if hashtable[hashcode] is None:
         hashtable[hashcode] = Phone(phone_number)
     else:
         flag = False
@@ -75,7 +77,7 @@ def insertPhone(hashtable, phone_number, hashcode):
             else:
                 pre = phone
                 phone = phone.getNextPhone()
-                if phone == None:
+                if phone is None:
                     break
         if not flag:
             pre.setNextPhone(Phone(phone_number))
@@ -88,28 +90,28 @@ def smallerPhoneNumber(ori, other):
 
 def printOutCrazyPhoneSpeaker(hashtable):
     size = len(hashtable)
-    maxAmount = 0
+    max_amount = 0
     phone_number = ""
-    sameCrazyManCount = 0
+    same_crazy_man = 0
     for idx in range(size):
         phone = hashtable[idx]
         while phone != None:
             amount = phone.getAmount()
-            if amount > maxAmount:
-                maxAmount = amount
-                sameCrazyManCount = 1
+            if amount > max_amount:
+                max_amount = amount
+                same_crazy_man = 1
                 phone_number = phone.getNumber()
-            elif amount == maxAmount:
-                sameCrazyManCount += 1
+            elif amount == max_amount:
+                same_crazy_man += 1
                 phone_number = smallerPhoneNumber(phone_number, phone.getNumber())
                     
 
             phone = phone.getNextPhone()
 
-    if sameCrazyManCount > 1:
-        reslut = phone_number + " " + str(maxAmount) + " " + str(sameCrazyManCount)
+    if same_crazy_man > 1:
+        reslut = phone_number + " " + str(max_amount) + " " + str(same_crazy_man)
     else:
-        reslut = phone_number + " " + str(maxAmount)
+        reslut = phone_number + " " + str(max_amount)
 
     print(reslut)
 
