@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="Part1"/>
+	<classpathentry kind="src" path="Part2"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="D:/Elyn/MOOC/DatastructureAndAlgorithm/Algorithm-Princeton(2016)/algs4.jar"/>
 	<classpathentry kind="output" path="bin"/>

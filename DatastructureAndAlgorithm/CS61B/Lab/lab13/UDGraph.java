@@ -151,40 +151,32 @@ public class UDGraph
     // Put your answer to Part II here.
     int cnt = 0;
     for(int ori = 0; ori < vertices; ori ++){
-    	for(int dest = 0; dest < vertices; dest ++){
-        	QList connected = new QList(ori);
-        	int depth = 0;
-        	int rear = 1;
-        	boolean flag = false;
-        	do{
-        		int temp_ori = connected.pop();
-        		rear --;
-        		if(rear == 0){
-        			flag = true;
-        			rear = connected.size();
-        		}
-	    		for(int internal = 0; internal < vertices; internal ++){
-	    			if(adjMatrix[temp_ori][internal] == true){
-	    				connected.add(internal);
-	    			}
-	    		}
-	    		if(flag){
-	    			flag = false;
-	    			rear = connected.size();
-	    			depth ++;
-	    		}
-	    		    		
-        	}while(depth < length - 1 && !connected.isEmpty());
-        	
-    		while(!connected.isEmpty()){
-    			int temp = connected.pop();
-            	if(adjMatrix[temp][dest] == true){
-            		newGraph.addEdge(ori, dest);
-            		break;
-            	}
-    			
+    	QList connected = new QList(ori);
+    	int depth = 0;
+    	int rear = 1;
+    	boolean flag = false;
+    	do{
+    		int temp_ori = connected.pop();
+    		rear --;
+    		if(rear == 0){
+    			flag = true;
+    			rear = connected.size();
     		}
-    	}
+    		for(int internal = 0; internal < vertices; internal ++){
+    			if(adjMatrix[temp_ori][internal] == true){
+    				connected.add(internal);
+    				if (depth == length - 1) {
+    				    newGraph.addEdge(ori, internal);
+    				}
+    			}
+    		}
+    		if(flag){
+    			flag = false;
+    			rear = connected.size();
+    			depth ++;
+    		}
+    		    		
+    	}while(depth < length && !connected.isEmpty());
     }
     return newGraph;
   }
