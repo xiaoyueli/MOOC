@@ -1,7 +1,6 @@
 package week3;
 
 import java.util.Arrays;
-
 import edu.princeton.cs.algs4.StdOut;
 
 public class BruteCollinearPoints {

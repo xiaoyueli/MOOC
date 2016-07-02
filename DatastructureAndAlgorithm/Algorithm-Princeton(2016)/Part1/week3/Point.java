@@ -1,7 +1,3 @@
-package week3;
-
-import java.util.Arrays;
-
 /******************************************************************************
  *  Compilation:  javac Point.java
  *  Execution:    java Point
@@ -11,7 +7,9 @@ import java.util.Arrays;
  *  For use on Coursera, Algorithms Part I programming assignment.
  *
  ******************************************************************************/
+package week3;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import edu.princeton.cs.algs4.StdDraw;
 
